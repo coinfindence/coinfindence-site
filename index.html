@@ -3,53 +3,67 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Coinfindence | SMC Slayer λ</title>
+  <title>Coinfindence | SMC Slayer λ Pro</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="assets/site.webmanifest">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Montserrat:wght@500;600;700;800&family=Aleo:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg: #0a0b0d;
-      --panel: #111318;
-      --panel-2: #151922;
-      --text: #f5f1ea;
-      --muted: #b6b0a6;
-      --soft: #8f887b;
-      --line: rgba(255,255,255,0.08);
-      --line-strong: rgba(255,255,255,0.16);
-      --accent: #c7a66a;
-      --accent-soft: rgba(199,166,106,0.18);
-      --max: 1180px;
-      --radius: 22px;
-      --shadow: 0 20px 60px rgba(0,0,0,0.32);
+      --bg: #0a0d14;
+      --bg-soft: #101521;
+      --panel: rgba(255,255,255,0.06);
+      --panel-strong: rgba(255,255,255,0.09);
+      --text: #f6f3ee;
+      --muted: #b8c0d1;
+      --soft: #8f99ad;
+      --line: rgba(255,255,255,0.10);
+      --gold: #d7ae6d;
+      --gold-soft: rgba(215,174,109,0.18);
+      --blue: #56b8ff;
+      --green: #59d6a3;
+      --red: #ff6b72;
+      --amber: #f0c15b;
+      --shadow: 0 30px 80px rgba(0,0,0,0.35);
+      --max: 1220px;
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      background:
-        radial-gradient(circle at top, rgba(199,166,106,0.08), transparent 28%),
-        linear-gradient(180deg, #0b0d10 0%, #090a0d 100%);
+      font-family: 'Plus Jakarta Sans', sans-serif;
       color: var(--text);
-      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(86,184,255,0.10), transparent 28%),
+        radial-gradient(circle at top right, rgba(215,174,109,0.10), transparent 24%),
+        linear-gradient(180deg, #080b11 0%, #0a0d14 100%);
       line-height: 1.65;
     }
 
     a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
+    img { display: block; max-width: 100%; }
 
     .container {
-      width: min(var(--max), calc(100% - 32px));
+      width: min(var(--max), calc(100% - 28px));
       margin: 0 auto;
     }
 
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 100;
-      backdrop-filter: blur(14px);
-      background: rgba(10,11,13,0.72);
+      z-index: 200;
+      backdrop-filter: blur(18px);
+      background: rgba(10,13,20,0.72);
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
@@ -57,78 +71,76 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      min-height: 78px;
-      gap: 24px;
+      gap: 20px;
+      min-height: 76px;
     }
 
-    .brand-wrap {
+    .brand {
       display: flex;
       align-items: center;
       gap: 14px;
       min-width: 0;
     }
 
-    .brand-icon {
+    .brand-badge {
       width: 52px;
       height: 52px;
-      border-radius: 50%;
-      border: 1px solid rgba(199,166,106,0.26);
-      display: grid;
-      place-items: center;
+      border-radius: 14px;
       overflow: hidden;
-      background: radial-gradient(circle at 30% 30%, rgba(199,166,106,0.2), rgba(255,255,255,0.02));
-      box-shadow: inset 0 0 20px rgba(199,166,106,0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: inset 0 0 20px rgba(255,255,255,0.03);
+      flex: 0 0 52px;
     }
 
-    .brand-icon span {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 0.04em;
-      animation: pulseLogo 5s ease-in-out infinite;
+    .brand-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    .brand-name {
-      min-width: 0;
-    }
+    .brand-copy { min-width: 0; }
 
-    .brand-name .eyebrow {
+    .brand-kicker {
       display: block;
       font-size: 0.72rem;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--soft);
       margin-bottom: 2px;
+      font-weight: 600;
     }
 
-    .brand-name .title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.4rem, 2vw, 2rem);
-      font-weight: 600;
-      line-height: 1;
+    .brand-title {
+      font-weight: 700;
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-family: 'Montserrat', sans-serif;
     }
 
     .menu {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 24px;
       flex-wrap: wrap;
       justify-content: flex-end;
     }
 
     .menu a {
-      color: rgba(245,241,234,0.88);
-      font-size: 0.98rem;
-      position: relative;
+      color: rgba(246,243,238,0.86);
+      font-size: 0.96rem;
       transition: color 0.25s ease;
+      position: relative;
+      font-weight: 600;
     }
 
     .menu a:hover,
-    .menu a.active {
-      color: var(--text);
-    }
+    .menu a.active { color: var(--text); }
 
     .menu a.active::after,
     .menu a:hover::after {
@@ -136,26 +148,31 @@
       position: absolute;
       left: 0;
       right: 0;
-      bottom: -10px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      bottom: -8px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--blue), var(--gold));
     }
 
-    section {
-      padding: 96px 0;
-      position: relative;
-    }
+    section { padding: 88px 0; }
 
-    .top-logo-hero,
-    .bottom-logo-hero {
-      width: 100%;
-      margin: 0 auto;
+    .top-logo {
       text-align: center;
-      overflow: hidden;
+      padding: 24px 0 10px;
     }
 
-    .top-logo-hero {
-      padding: 32px 10px 12px;
+    .hero-logo {
+      text-align: center;
+      margin: 0 auto 14px;
+      opacity: 0;
+      transform: translateY(18px) scale(0.96);
+      animation: heroLogoIn 1.2s cubic-bezier(.2,.8,.2,1) forwards;
+    }
+
+    .hero-logo img {
+      width: 128px;
+      max-width: 28vw;
+      filter: drop-shadow(0 10px 24px rgba(0,0,0,0.32));
     }
 
     .animated-title {
@@ -177,25 +194,586 @@
       background-clip: text;
       -webkit-background-clip: text;
       animation: expand-rev 8s ease-in-out infinite;
+      font-size: clamp(2.1rem, 6vw, 4.8rem);
     }
 
-    .animated-title .line {
-      display: inline;
-      white-space: nowrap;
-    }
+    .animated-title .line { display: inline; white-space: nowrap; }
 
     .animated-subtitle {
       margin-top: 8px;
       font-family: 'Aleo', serif;
+      color: #e6cfcf;
+      font-size: clamp(0.95rem, 2vw, 1.55rem);
       font-weight: 700;
-      line-height: 1.28;
-      color: #E6CFCF;
     }
 
-    .bottom-logo-hero {
-      max-width: 1000px;
-      padding: 16px 12px 0;
+    .hero {
+      padding-top: 18px;
+      padding-bottom: 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #dfe7f5;
+      font-size: 0.84rem;
+      font-weight: 600;
+    }
+
+    .hero h1,
+    .section-title,
+    .card-title,
+    .quote,
+    .pricing-title,
+    .price,
+    .faq-item h3 {
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: -0.03em;
+    }
+
+    .hero h1 {
+      margin: 18px 0 16px;
+      font-size: clamp(2.8rem, 7vw, 5.3rem);
+      line-height: 0.96;
+      max-width: 10ch;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.02rem;
+      max-width: 60ch;
+      margin: 0 0 22px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.18);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), #e6c485);
+      color: #101214;
+      box-shadow: 0 18px 40px rgba(215,174,109,0.18);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.1);
+      color: var(--text);
+    }
+
+    .friendly-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .friendly-card {
+      padding: 18px;
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .friendly-card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .friendly-card span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero-visual,
+    .soft-card,
+    .engine-card,
+    .pricing-card,
+    .faq-item,
+    .feature-block {
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-visual {
+      padding: 14px;
+      border-radius: var(--radius-xl);
+    }
+
+    .visual-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.88rem;
+      padding: 6px 6px 14px;
+    }
+
+    .hero-shot {
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .quote-box {
+      margin-top: 16px;
+      padding: 22px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(86,184,255,0.10), rgba(215,174,109,0.10));
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .quote {
+      margin: 0;
+      font-size: clamp(1.7rem, 3vw, 2.7rem);
+      line-height: 1.02;
+      max-width: 16ch;
+    }
+
+    .quote-box p:last-child {
+      margin: 12px 0 0;
+      color: var(--muted);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(2.2rem, 4.5vw, 4rem);
+      line-height: 0.98;
+    }
+
+    .section-copy {
+      margin: 0;
+      color: var(--muted);
+      max-width: 56ch;
+    }
+
+    .pain-grid,
+    .feature-grid,
+    .faq-grid,
+    .pricing-grid,
+    .proof-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .pain-grid {
+      grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+
+    .soft-card {
+      padding: 22px;
+      border-radius: 24px;
+    }
+
+    .soft-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .soft-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .engines-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 20px;
+    }
+
+    .engine-card {
+      padding: 22px;
+      border-radius: 26px;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
       position: relative;
+      overflow: hidden;
+    }
+
+    .engine-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 3px;
+      opacity: 0.95;
+    }
+
+    .engine-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 46px rgba(0,0,0,0.28);
+    }
+
+    .engine-card.engine-a {
+      border-color: rgba(89,214,163,0.18);
+      background:
+        radial-gradient(circle at top right, rgba(89,214,163,0.10), transparent 32%),
+        rgba(255,255,255,0.045);
+    }
+
+    .engine-card.engine-a::before {
+      background: linear-gradient(90deg, rgba(89,214,163,0.0), rgba(89,214,163,0.95), rgba(89,214,163,0.0));
+    }
+
+    .engine-card.engine-b1 {
+      border-color: rgba(86,184,255,0.18);
+      background:
+        radial-gradient(circle at top right, rgba(86,184,255,0.10), transparent 32%),
+        rgba(255,255,255,0.045);
+    }
+
+    .engine-card.engine-b1::before {
+      background: linear-gradient(90deg, rgba(86,184,255,0.0), rgba(86,184,255,0.95), rgba(86,184,255,0.0));
+    }
+
+    .engine-card.engine-b2 {
+      border-color: rgba(240,193,91,0.2);
+      background:
+        radial-gradient(circle at top right, rgba(240,193,91,0.10), transparent 32%),
+        rgba(255,255,255,0.045);
+    }
+
+    .engine-card.engine-b2::before {
+      background: linear-gradient(90deg, rgba(240,193,91,0.0), rgba(240,193,91,0.95), rgba(240,193,91,0.0));
+    }
+
+    .engine-card.engine-bmv {
+      border-color: rgba(255,107,114,0.18);
+      background:
+        radial-gradient(circle at top right, rgba(255,107,114,0.10), transparent 32%),
+        rgba(255,255,255,0.045);
+    }
+
+    .engine-card.engine-bmv::before {
+      background: linear-gradient(90deg, rgba(255,107,114,0.0), rgba(255,107,114,0.95), rgba(255,107,114,0.0));
+    }
+
+    .engine-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .engine-badge {
+      width: 50px;
+      height: 50px;
+      flex: 0 0 50px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      border: 1px solid rgba(255,255,255,0.1);
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .engine-a .engine-badge {
+      background: linear-gradient(135deg, rgba(89,214,163,0.22), rgba(89,214,163,0.08));
+      color: #a7f0ce;
+    }
+
+    .engine-b1 .engine-badge {
+      background: linear-gradient(135deg, rgba(86,184,255,0.22), rgba(86,184,255,0.08));
+      color: #b8e0ff;
+    }
+
+    .engine-b2 .engine-badge {
+      background: linear-gradient(135deg, rgba(240,193,91,0.22), rgba(240,193,91,0.08));
+      color: #ffe0a2;
+    }
+
+    .engine-bmv .engine-badge {
+      background: linear-gradient(135deg, rgba(255,107,114,0.22), rgba(255,107,114,0.08));
+      color: #ffc0c4;
+    }
+
+    .eyebrow {
+      display: block;
+      color: var(--soft);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.75rem;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .card-title {
+      margin: 0 0 10px;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      line-height: 1;
+    }
+
+    .engine-card p {
+      color: var(--muted);
+      margin: 0 0 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .clean-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: grid;
+      gap: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .clean-list li {
+      display: flex;
+      gap: 10px;
+      align-items: start;
+      color: #dee5f2;
+      font-size: 0.94rem;
+    }
+
+    .clean-list li::before {
+      content: "•";
+      color: var(--gold);
+      font-size: 1.2rem;
+      line-height: 1;
+      margin-top: 1px;
+    }
+
+    .mini-note {
+      color: var(--soft);
+      font-size: 0.88rem;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .preview {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+      z-index: 1;
+    }
+
+    .preview figcaption {
+      padding: 12px 14px;
+      color: var(--soft);
+      font-size: 0.84rem;
+      background: rgba(0,0,0,0.18);
+    }
+
+    .feature-grid {
+      grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+
+    .feature-block {
+      padding: 24px;
+      border-radius: 26px;
+    }
+
+    .feature-block p { color: var(--muted); }
+
+    .proof-grid {
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      margin-top: 22px;
+    }
+
+    .proof-card {
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .proof-card strong {
+      display: block;
+      font-size: 1.5rem;
+      margin-bottom: 6px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .proof-card span { color: var(--muted); font-size: 0.9rem; }
+
+    .pricing-grid {
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      align-items: stretch;
+    }
+
+    .pricing-card {
+      padding: 26px;
+      border-radius: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .pricing-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, rgba(215,174,109,0.75), transparent);
+      opacity: 0.65;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 46px rgba(0,0,0,0.28);
+    }
+
+    .pricing-card.featured {
+      border-color: rgba(215,174,109,0.38);
+      background:
+        radial-gradient(circle at top right, rgba(215,174,109,0.13), transparent 34%),
+        linear-gradient(135deg, rgba(215,174,109,0.10), rgba(255,255,255,0.05));
+      box-shadow: 0 28px 60px rgba(215,174,109,0.10), var(--shadow);
+    }
+
+    .pricing-card.featured::before {
+      height: 4px;
+      opacity: 1;
+      background: linear-gradient(90deg, rgba(215,174,109,0.05), rgba(215,174,109,1), rgba(215,174,109,0.05));
+    }
+
+    .pricing-card.featured::after {
+      content: "Recommended";
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: #111315;
+      background: linear-gradient(135deg, #f3cc88, #d7ae6d);
+      box-shadow: 0 12px 28px rgba(215,174,109,0.18);
+    }
+
+    .pricing-tag {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      color: #eae4d8;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .pricing-title {
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1;
+    }
+
+    .price-line {
+      display: flex;
+      align-items: end;
+      gap: 10px;
+      margin: 14px 0 16px;
+    }
+
+    .price {
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .price-note { color: var(--muted); font-size: 0.95rem; }
+
+    .faq-grid {
+      grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+
+    .faq-item {
+      padding: 22px;
+      border-radius: 22px;
+    }
+
+    .faq-item h3 {
+      margin: 0 0 8px;
+      font-size: 1.02rem;
+    }
+
+    .faq-item p { margin: 0; color: var(--muted); }
+
+    .cta-shell {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+    }
+
+    .cta-box,
+    .info-box {
+      padding: 26px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, rgba(86,184,255,0.12), rgba(215,174,109,0.12));
+    }
+
+    .bottom-logo {
+      text-align: center;
+      padding-top: 16px;
+      overflow: hidden;
+    }
+
+    .footer-logo {
+      width: 104px;
+      margin: 0 auto 12px;
+      opacity: 0.95;
+      filter: drop-shadow(0 10px 24px rgba(0,0,0,0.3));
     }
 
     .logo-stack {
@@ -241,6 +819,8 @@
       animation-duration: 0.7s, 8s;
       animation-delay: 0.7s, 1.2s;
       animation-fill-mode: forwards, infinite;
+      font-family: 'Aleo', serif;
+      font-weight: 700;
     }
 
     .sweep {
@@ -249,487 +829,37 @@
       top: 0;
       width: 120%;
       height: 100%;
-      background: linear-gradient(90deg, rgba(234, 67, 53, 0.9), rgba(251, 188, 5, 0.9), rgba(52, 168, 83, 0.9));
+      background: linear-gradient(90deg, rgba(234,67,53,0.9), rgba(251,188,5,0.9), rgba(52,168,83,0.9));
       transform: skewX(-18deg);
       z-index: 1;
       animation: sweepAcross 1.4s ease-out forwards;
     }
 
-    .hero {
-      padding-top: 36px;
-      padding-bottom: 80px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 42px;
-      align-items: center;
-    }
-
-    .eyebrow-large {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      border: 1px solid rgba(199,166,106,0.18);
-      background: rgba(199,166,106,0.08);
-      color: #e7d7b6;
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-size: 0.82rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 22px;
-    }
-
-    .hero h1,
-    h2,
-    h3,
-    .cta-title,
-    .quote {
-      font-family: 'Cormorant Garamond', serif;
-      letter-spacing: -0.02em;
-    }
-
-    .hero h1 {
-      margin: 0 0 18px;
-      font-size: clamp(3.1rem, 7vw, 6.1rem);
-      line-height: 0.94;
-      font-weight: 600;
-      max-width: 10ch;
-    }
-
-    .hero p {
-      max-width: 62ch;
-      font-size: 1.04rem;
-      color: var(--muted);
-      margin: 0 0 28px;
-    }
-
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 34px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 52px;
-      padding: 0 22px;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 0.96rem;
-      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-      cursor: pointer;
-      border: 1px solid transparent;
-    }
-
-    .btn:hover { transform: translateY(-2px); }
-
-    .btn-primary {
-      background: linear-gradient(180deg, #d4b17a 0%, #bd985e 100%);
-      color: #121212;
-      box-shadow: 0 14px 34px rgba(199,166,106,0.18);
-    }
-
-    .btn-secondary {
-      border-color: rgba(255,255,255,0.14);
-      color: var(--text);
-      background: rgba(255,255,255,0.02);
-    }
-
-    .hero-points {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 26px;
-    }
-
-    .mini-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 16px 16px 14px;
-      box-shadow: var(--shadow);
-    }
-
-    .mini-card strong {
-      display: block;
-      color: var(--text);
-      margin-bottom: 6px;
-      font-size: 0.92rem;
-    }
-
-    .mini-card span {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .hero-visual {
-      position: relative;
-    }
-
-    .visual-card,
-    .screenshot-card {
-      border-radius: 28px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: linear-gradient(180deg, #11151c 0%, #0d0f13 100%);
-      box-shadow: 0 30px 70px rgba(0,0,0,0.42);
-    }
-
-    .chart-top,
-    .card-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 18px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .hero-shot,
-    .engine-shot,
-    .feature-shot {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: cover;
-      background: #0b111b;
-    }
-
-    .quote-strip {
-      padding: 24px 26px;
-      margin-top: 18px;
-      border-radius: 24px;
-      border: 1px solid rgba(199,166,106,0.12);
-      background: linear-gradient(180deg, rgba(199,166,106,0.08), rgba(255,255,255,0.02));
-    }
-
-    .quote {
-      margin: 0;
-      font-size: clamp(1.6rem, 3vw, 2.8rem);
-      line-height: 1.02;
-      max-width: 20ch;
-    }
-
-    .quote-note {
-      margin-top: 12px;
-      color: var(--muted);
-      max-width: 58ch;
-    }
-
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 20px;
-      margin-bottom: 34px;
-    }
-
-    .section-head h2 {
-      margin: 0;
-      font-size: clamp(2.4rem, 4vw, 4rem);
-      line-height: 0.96;
-      font-weight: 600;
-    }
-
-    .section-head p {
-      margin: 0;
-      max-width: 56ch;
-      color: var(--muted);
-    }
-
-    .engine-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-    }
-
-    .engine-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 24px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.025));
-      padding: 28px;
-      box-shadow: var(--shadow);
-      transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
-    }
-
-    .engine-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(199,166,106,0.28);
-      box-shadow: 0 30px 70px rgba(0,0,0,0.42);
-    }
-
-    .engine-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top right, rgba(199,166,106,0.12), transparent 38%);
-      pointer-events: none;
-    }
-
-    .engine-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: start;
-      gap: 18px;
-      margin-bottom: 20px;
-    }
-
-    .engine-code {
-      display: inline-flex;
-      min-width: 56px;
-      height: 56px;
-      align-items: center;
-      justify-content: center;
-      border-radius: 16px;
-      border: 1px solid rgba(199,166,106,0.24);
-      background: rgba(199,166,106,0.08);
-      color: #ebd6ac;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      font-size: 1rem;
-    }
-
-    .engine-label {
-      color: var(--soft);
-      text-transform: uppercase;
-      font-size: 0.78rem;
-      letter-spacing: 0.18em;
-      margin-bottom: 8px;
-    }
-
-    .engine-card h3 {
-      margin: 0 0 10px;
-      font-size: clamp(2rem, 3vw, 2.7rem);
-      line-height: 0.95;
-      font-weight: 600;
-    }
-
-    .engine-card p {
-      margin: 0 0 18px;
-      color: var(--muted);
-    }
-
-    .feature-list {
-      display: grid;
-      gap: 10px;
-      padding: 0;
-      margin: 0 0 18px;
-      list-style: none;
-    }
-
-    .feature-list li {
-      display: flex;
-      align-items: start;
-      gap: 10px;
-      color: #ddd7cc;
-      font-size: 0.95rem;
-    }
-
-    .feature-list li::before {
-      content: "✦";
-      color: var(--accent);
-      flex: 0 0 auto;
-      margin-top: 1px;
-    }
-
-    .engine-note {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 14px;
-      color: var(--soft);
-      font-size: 0.9rem;
-      margin-bottom: 18px;
-    }
-
-    .engine-preview {
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.02);
-    }
-
-    .engine-preview figcaption {
-      padding: 12px 14px;
-      color: var(--soft);
-      font-size: 0.86rem;
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .split-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      align-items: stretch;
-    }
-
-    .panel-card,
-    .risk-card,
-    .cta-card,
-    .info-card {
-      border-radius: 24px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-      padding: 28px;
-      box-shadow: var(--shadow);
-    }
-
-    .panel-card h3,
-    .risk-card h3,
-    .cta-card h3,
-    .info-card h3 {
-      margin: 0 0 14px;
-      font-size: clamp(2rem, 3vw, 2.8rem);
-      line-height: 0.98;
-      font-weight: 600;
-    }
-
-    .panel-card p,
-    .risk-card p,
-    .cta-card p,
-    .info-card p {
-      margin: 0 0 18px;
-      color: var(--muted);
-    }
-
-    .stack-list {
-      display: grid;
-      gap: 14px;
-    }
-
-    .stack-item {
-      padding: 14px 16px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .stack-item strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 0.96rem;
-      color: var(--text);
-    }
-
-    .stack-item span {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .feature-preview {
-      margin-top: 20px;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.02);
-    }
-
-    .principles {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 26px;
-    }
-
-    .principle {
-      padding: 20px;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.025);
-    }
-
-    .principle h4 {
-      margin: 0 0 8px;
-      font-size: 1.02rem;
-      color: var(--text);
-    }
-
-    .principle p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .cta-shell {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 24px;
-    }
-
-    .cta-card {
-      background: linear-gradient(180deg, rgba(199,166,106,0.1), rgba(255,255,255,0.03));
-      border-color: rgba(199,166,106,0.16);
-    }
-
-    .cta-title {
-      margin: 0 0 16px;
-      font-size: clamp(2.4rem, 4vw, 4.2rem);
-      line-height: 0.94;
-      font-weight: 600;
-      max-width: 11ch;
-    }
-
-    .cta-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 24px;
-    }
-
-    .small-note {
-      margin-top: 16px;
-      color: var(--soft);
-      font-size: 0.9rem;
-    }
-
     .footer {
-      padding: 40px 0 60px;
+      padding: 34px 0 54px;
       border-top: 1px solid rgba(255,255,255,0.06);
+      margin-top: 34px;
     }
 
-    .footer-grid {
+    .footer-row {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .footer-brand {
-      display: flex;
       align-items: center;
-      gap: 14px;
-    }
-
-    .footer-brand .brand-icon {
-      width: 46px;
-      height: 46px;
-    }
-
-    .footer-text {
+      flex-wrap: wrap;
       color: var(--muted);
       font-size: 0.92rem;
     }
 
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      color: var(--muted);
-      font-size: 0.94rem;
-    }
-
-    @keyframes pulseLogo {
-      0%, 100% { transform: scale(1); opacity: 0.9; }
-      50% { transform: scale(1.08); opacity: 1; }
+    @keyframes heroLogoIn {
+      0% {
+        opacity: 0;
+        transform: translateY(18px) scale(0.96);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
     @keyframes expand-rev {
@@ -757,119 +887,81 @@
       75% { background-position: right top; }
     }
 
-    @media (max-width: 1080px) {
+    @media (max-width: 1100px) {
       .hero-grid,
-      .split-grid,
-      .cta-shell {
+      .cta-shell,
+      .feature-grid,
+      .pricing-grid,
+      .faq-grid,
+      .pain-grid,
+      .proof-grid,
+      .engines-grid {
         grid-template-columns: 1fr;
       }
-
-      .hero h1 { max-width: 12ch; }
-      .principles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
-    @media (max-width: 840px) {
+    @media (max-width: 860px) {
       .nav {
         min-height: auto;
         padding: 18px 0;
-        align-items: start;
-        flex-direction: column;
-      }
-
-      .menu {
-        gap: 16px 20px;
-        justify-content: flex-start;
-      }
-
-      .engine-grid,
-      .hero-points {
-        grid-template-columns: 1fr;
-      }
-
-      .section-head {
         flex-direction: column;
         align-items: start;
       }
-    }
 
-    @media (max-width: 767px) {
-      .top-logo-hero { padding: 24px 8px 10px; }
-      .animated-title { font-size: 2.15rem; line-height: 1.02; }
-      .animated-subtitle { font-size: 0.92rem; margin-top: 6px; }
-      .bottom-logo-hero { padding: 12px 10px 0; }
-      .coin, .find { font-size: clamp(2rem, 11vw, 3.2rem); }
-      .brand-wordmark { font-size: clamp(1.6rem, 8.5vw, 2.6rem); }
-    }
+      .menu { justify-content: flex-start; gap: 16px 18px; }
+      .friendly-grid { grid-template-columns: 1fr; }
+      .section-head { flex-direction: column; align-items: start; }
 
-    @media (min-width: 768px) and (max-width: 1023px) {
-      .animated-title { font-size: 3.2rem; line-height: 1.04; }
-      .animated-subtitle { font-size: 1.2rem; margin-top: 8px; }
-      .coin, .find { font-size: clamp(3rem, 7vw, 4.5rem); }
-      .brand-wordmark { font-size: clamp(2.4rem, 5.5vw, 3.8rem); }
-    }
-
-    @media (min-width: 1024px) {
-      .animated-title { font-size: 4.8rem; line-height: 1.05; }
-      .animated-subtitle { font-size: 1.65rem; margin-top: 10px; }
+      .pricing-card.featured::after {
+        position: static;
+        display: inline-flex;
+        margin-bottom: 12px;
+      }
     }
 
     @media (max-width: 640px) {
-      section {
-        padding: 76px 0;
-      }
-
-      .hero {
-        padding-top: 24px;
-        padding-bottom: 54px;
-      }
-
-      .container {
-        width: min(var(--max), calc(100% - 22px));
-      }
-
-      .hero h1 {
-        font-size: clamp(2.7rem, 12vw, 4.1rem);
-      }
-
-      .quote,
-      .cta-title,
-      .section-head h2,
-      .panel-card h3,
-      .risk-card h3,
-      .cta-card h3,
-      .info-card h3,
-      .engine-card h3 {
-        max-width: 100%;
-      }
-
-      .principles { grid-template-columns: 1fr; }
-      .footer-grid { align-items: start; }
+      section { padding: 74px 0; }
+      .hero { padding-top: 10px; }
+      .container { width: min(var(--max), calc(100% - 18px)); }
+      .animated-title { font-size: 2rem; }
+      .animated-subtitle { font-size: 0.92rem; }
+      .hero-logo img { width: 96px; }
+      .brand-badge { width: 46px; height: 46px; flex-basis: 46px; }
     }
   </style>
 </head>
+
 <body>
   <header class="topbar">
     <div class="container nav">
-      <a href="#top" class="brand-wrap">
-        <div class="brand-icon"><span>CF</span></div>
-        <div class="brand-name">
-          <span class="eyebrow">Structured Trading</span>
-          <span class="title">Coinfindence | SMC Slayer λ</span>
+      <a href="#top" class="brand">
+        <div class="brand-badge">
+          <img src="assets/logo.png" alt="Coinfindence logo">
+        </div>
+        <div class="brand-copy">
+          <span class="brand-kicker">Structured Trading</span>
+          <span class="brand-title">Coinfindence | SMC Slayer λ Pro</span>
         </div>
       </a>
+
       <nav class="menu">
         <a href="#top" class="active">Home</a>
         <a href="#engines">Engines</a>
         <a href="#features">Features</a>
-        <a href="#principles">Principles</a>
-        <a href="#cta">Access</a>
+        <a href="#proof">Performance</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
       </nav>
     </div>
   </header>
 
   <main id="top">
-    <section class="top-logo-hero">
+    <section class="top-logo">
       <div class="container">
+        <div class="hero-logo">
+          <img src="assets/logo.png" alt="Coinfindence logo">
+        </div>
+
         <h1 class="animated-title">
           <span class="line">Coinfindence</span>
           <span class="line">SMC Slayer λ Pro</span>
@@ -881,47 +973,62 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow-large">Structured execution system</div>
-          <h1>Trade with structure.<br>Not emotion.</h1>
+          <div class="pill">Built for beginners to advanced traders</div>
+          <h1>Trade with structure. Not stress.</h1>
           <p>
-            SMC Slayer λ is a system-oriented trading framework built around market structure,
-            execution rhythm, and decision discipline. Instead of forcing one logic into every chart,
-            it separates market conditions and activates only the engine that fits the environment.
+            SMC Slayer λ Pro is a cleaner, more readable execution system built around structure, timing, and decision quality.
+            It is designed to help traders understand when to act, when to wait, and when to stay out.
           </p>
-          <div class="button-row">
-            <a class="btn btn-primary" href="#cta">Join Telegram</a>
-            <a class="btn btn-secondary" href="#engines">Explore the Engines</a>
+          <div class="actions">
+            <a class="btn btn-primary" href="#pricing">View Plans</a>
+            <a class="btn btn-secondary" href="#engines">See the Engines</a>
           </div>
-          <div class="hero-points">
-            <div class="mini-card">
-              <strong>Structure × Rhythm</strong>
-              <span>Combines SMC structure logic with opportunity timing.</span>
+          <div class="friendly-grid">
+            <div class="friendly-card">
+              <strong>Easy to read</strong>
+              <span>Cleaner layout and simpler flow, even if you are new to structured trading.</span>
             </div>
-            <div class="mini-card">
-              <strong>Built-in Risk Control</strong>
-              <span>Time Stop logic helps prevent low-efficiency trades from dragging performance.</span>
+            <div class="friendly-card">
+              <strong>Built-in discipline</strong>
+              <span>Helps reduce random entries and low-quality trades before they waste time.</span>
             </div>
-            <div class="mini-card">
-              <strong>Decision Panel</strong>
-              <span>HTF bias, regime, market score, and risk context in one view.</span>
+            <div class="friendly-card">
+              <strong>Made to scale</strong>
+              <span>Useful for casual traders, but detailed enough for serious users who want more control.</span>
             </div>
           </div>
         </div>
 
         <div class="hero-visual">
-          <div class="screenshot-card">
-            <div class="card-top">
-              <span>Live Interface</span>
-              <span>Panel · Multi-Engine · Risk State</span>
-            </div>
-            <img class="hero-shot" src="assets/home-page.png" alt="SMC Slayer λ live chart interface and decision panel screenshot">
+          <div class="visual-top">
+            <span>Live system preview</span>
+            <span>Panel · Multi-Engine · Risk State</span>
           </div>
-          <div class="quote-strip">
-            <p class="quote">Bad timing kills good trades.</p>
-            <p class="quote-note">
-              Dedicated execution logic for every major market condition.
-              Better structure. Better selection. Less noise.
-            </p>
+          <div class="hero-shot">
+            <img src="assets/home-page.png" alt="SMC Slayer λ Pro interface preview">
+          </div>
+          <div class="quote-box">
+            <p class="quote">Most traders don’t lose because they are wrong. They lose because they act at the wrong time.</p>
+            <p>You do not need more noise. You need better selection, clearer timing, and stronger execution discipline.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pain">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">What this system is trying to solve</h2>
+          <p class="section-copy">A lot of traders do not actually have a signal problem. They have a timing problem, a filtering problem, or a discipline problem. This page should say that clearly instead of pretending every user wants a wall of technical jargon.</p>
+        </div>
+        <div class="pain-grid">
+          <div class="soft-card">
+            <h3>Too many entries, not enough quality</h3>
+            <p>SMC Slayer λ Pro separates different market conditions so the same logic is not forced into every chart.</p>
+          </div>
+          <div class="soft-card">
+            <h3>Good ideas ruined by bad timing</h3>
+            <p>The system focuses on structure and execution timing, not just drawing zones and hoping price behaves.</p>
           </div>
         </div>
       </div>
@@ -930,109 +1037,92 @@
     <section id="engines">
       <div class="container">
         <div class="section-head">
-          <div>
-            <h2>Four key engines.<br>One unified system.</h2>
-          </div>
-          <p>
-            Each engine is designed for a specific market condition. That means fewer forced trades,
-            cleaner execution logic, and a system that adapts instead of pretending every chart behaves the same way.
-          </p>
+          <h2 class="section-title">Four engines. Different jobs. One system.</h2>
+          <p class="section-copy">This section should feel approachable. People should understand what each engine is for without needing a decoder ring or a PhD in overcomplicated trading acronyms.</p>
         </div>
 
-        <div class="engine-grid">
-          <article class="engine-card">
+        <div class="engines-grid">
+          <article class="engine-card engine-a">
             <div class="engine-top">
               <div>
-                <div class="engine-label">Engine A</div>
-                <h3>Range / Retest</h3>
+                <span class="eyebrow">Engine A</span>
+                <h3 class="card-title">Range / Retest</h3>
               </div>
-              <div class="engine-code">A</div>
+              <div class="engine-badge">A</div>
             </div>
-            <p>
-              Built for range conditions and retest structures. Designed to create lower-risk entries
-              while reducing the chance of being repeatedly chopped inside sideways markets.
-            </p>
-            <ul class="feature-list">
-              <li>Focuses on controlled reactions from key zones</li>
-              <li>Suited for range-bound and retest-heavy environments</li>
-              <li>Aims to reduce unnecessary exposure during choppy price action</li>
+            <p>Designed for sideways conditions and controlled retests. Aims to reduce the kind of random chop that chews up traders who cannot stop pressing buttons.</p>
+            <ul class="clean-list">
+              <li>Made for range conditions and reaction zones</li>
+              <li>Focuses on lower-risk entry structures</li>
+              <li>Helps reduce repeated stop-outs in messy markets</li>
             </ul>
-            <div class="engine-note">Use when market structure is present, but expansion has not fully emerged.</div>
-            <figure class="engine-preview">
-              <img class="engine-shot" src="assets/engine-a.png" alt="Engine A Range Retest trade example">
-              <figcaption>Example: Range / Retest logic capturing a controlled long reaction.</figcaption>
+            <div class="mini-note">Best used when price is reacting, not exploding.</div>
+            <figure class="preview">
+              <img src="assets/engine-a.png" alt="Engine A trade example">
+              <figcaption>Example of A engine working in a range / retest environment.</figcaption>
             </figure>
           </article>
 
-          <article class="engine-card">
+          <article class="engine-card engine-b1">
             <div class="engine-top">
               <div>
-                <div class="engine-label">Engine B1</div>
-                <h3>Trend Continuation</h3>
+                <span class="eyebrow">Engine B1</span>
+                <h3 class="card-title">Trend Continuation</h3>
               </div>
-              <div class="engine-code">B1</div>
+              <div class="engine-badge">B1</div>
             </div>
-            <p>
-              Designed to capture the continuation leg of an already established trend. Combines structure
-              and momentum assessment to target the most stable directional trades.
-            </p>
-            <ul class="feature-list">
-              <li>Built for structured pullback and continuation conditions</li>
-              <li>Filters for cleaner directional flow</li>
-              <li>Prioritizes stable trend-following execution over random chasing</li>
+            <p>Built to follow cleaner continuation moves after a trend is already established. This is the part that tries to work with momentum, not wrestle with it for entertainment.</p>
+            <ul class="clean-list">
+              <li>Targets structured continuation rather than late chasing</li>
+              <li>Uses trend context and execution timing together</li>
+              <li>Designed for steadier directional participation</li>
             </ul>
-            <div class="engine-note">Use when the trend is already formed and the market offers a qualified continuation setup.</div>
-            <figure class="engine-preview">
-              <img class="engine-shot" src="assets/engine-b1.png" alt="Engine B1 Trend Continuation trade example">
-              <figcaption>Example: B1 continuation entry following directional structure and pullback validation.</figcaption>
+            <div class="mini-note">Best used when trend structure already exists and the market offers a valid continuation.</div>
+            <figure class="preview">
+              <img src="assets/engine-b1.png" alt="Engine B1 trade example">
+              <figcaption>Example of B1 continuation logic in a trending market.</figcaption>
             </figure>
           </article>
 
-          <article class="engine-card">
+          <article class="engine-card engine-b2">
             <div class="engine-top">
               <div>
-                <div class="engine-label">Engine B2</div>
-                <h3>Momentum Expansion</h3>
+                <span class="eyebrow">Engine B2</span>
+                <h3 class="card-title">Momentum Expansion</h3>
               </div>
-              <div class="engine-code">B2</div>
+              <div class="engine-badge">B2</div>
             </div>
-            <p>
-              Built for acceleration phases. This engine focuses on fast expansion after valid breaks,
-              aiming to capture stronger directional pushes when the market shifts into momentum mode.
-            </p>
-            <ul class="feature-list">
-              <li>Designed for breakout-to-expansion sequences</li>
-              <li>Targets stronger velocity after structure release</li>
-              <li>Fits more aggressive conditions while preserving execution rules</li>
+            <p>Built for acceleration phases. If the market shifts from orderly movement into real expansion, this engine is designed to catch that change without turning into chaos.</p>
+            <ul class="clean-list">
+              <li>Designed for breakout and expansion conditions</li>
+              <li>Fits faster moves and sharper directional release</li>
+              <li>More aggressive than B1, but still rule-based</li>
             </ul>
-            <div class="engine-note">Use when structure breaks cleanly and momentum begins to accelerate instead of fade.</div>
-            <figure class="engine-preview">
-              <img class="engine-shot" src="assets/engine-b2.png" alt="Engine B2 Momentum Expansion trade example">
-              <figcaption>Example: B2 acceleration logic capturing a sharp expansion leg.</figcaption>
+            <div class="mini-note">Best used when price is no longer drifting and starts to push with force.</div>
+            <figure class="preview">
+              <img src="assets/engine-b2.png" alt="Engine B2 trade example">
+              <figcaption>Example of B2 capturing a stronger acceleration phase.</figcaption>
             </figure>
           </article>
 
-          <article class="engine-card">
+          <article class="engine-card engine-bmv">
             <div class="engine-top">
               <div>
-                <div class="engine-label">BMV Module</div>
-                <h3>Opportunity Engine</h3>
+                <span class="eyebrow">BMV Module</span>
+                <h3 class="card-title">Opportunity Engine</h3>
               </div>
-              <div class="engine-code">🔓</div>
+              <div class="engine-badge">🔓</div>
             </div>
-            <p>
-              A higher-frequency opportunity layer based on rhythm and momentum logic. It increases setup availability
-              and helps capture short-term movement without forcing random trades.
-            </p>
-            <ul class="feature-list">
-              <li>Adds more opportunities under valid short-term conditions</li>
-              <li>Designed to increase activity without destroying system discipline</li>
-              <li>Advanced module with unlock-only access</li>
+            <p>A higher-frequency opportunity module built for traders who want more valid setups. It is meant to add opportunities, not to turn the chart into a vending machine.</p>
+            <ul class="clean-list">
+              <li>Adds short-term opportunities under valid conditions</li>
+              <li>Extends activity without throwing away discipline</li>
+              <li>Advanced module intended for unlocked plans</li>
             </ul>
-            <div class="engine-note">BMV is an advanced unlock module intended for traders who want more execution opportunities.</div>
-            <figure class="engine-preview">
-              <img class="engine-shot" src="assets/engine-bmv.png" alt="BMV opportunity engine trade example">
-              <figcaption>Example: BMV module identifying an additional short-term opportunity.</figcaption>
+            <div class="mini-note">Best used by traders who want more activity after understanding the core system.</div>
+            <figure class="preview">
+              <img src="assets/engine-bmv.png" alt="BMV trade example">
+              <figcaption>Example of BMV identifying an additional short-term opportunity.</figcaption>
             </figure>
           </article>
         </div>
@@ -1040,139 +1130,196 @@
     </section>
 
     <section id="features">
-      <div class="container split-grid">
-        <div class="panel-card">
-          <h3>Decision first.<br>Entry second.</h3>
-          <p>
-            The panel does not just show where to enter. It helps determine whether a trade should be taken at all.
-            That distinction matters more than most traders want to admit.
-          </p>
-          <div class="stack-list">
-            <div class="stack-item">
-              <strong>HTF Bias</strong>
-              <span>Higher timeframe directional context shown directly in the decision layer.</span>
-            </div>
-            <div class="stack-item">
-              <strong>Regime</strong>
-              <span>Displays the current market environment so execution logic stays condition-aware.</span>
-            </div>
-            <div class="stack-item">
-              <strong>Market Score</strong>
-              <span>Aggregates system context into a readable decision reference instead of isolated signals.</span>
-            </div>
-            <div class="stack-item">
-              <strong>Risk Context</strong>
-              <span>Keeps decision quality visible before trade commitment, not after damage is done.</span>
-            </div>
-          </div>
-          <figure class="feature-preview">
-            <img class="feature-shot" src="assets/home-page.png" alt="Decision panel and trade management interface screenshot">
-          </figure>
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Core features that actually matter</h2>
+          <p class="section-copy">This should not read like a spec sheet written by a bored plugin seller. It should explain what helps traders make better decisions in plain English.</p>
         </div>
-
-        <div class="risk-card">
-          <h3>Built-in risk control.<br>Not damage control.</h3>
-          <p>
-            Risk control is integrated into the system logic itself. It is not a cosmetic add-on and it is not there to look responsible.
-          </p>
-          <div class="stack-list">
-            <div class="stack-item">
-              <strong>Time Stop</strong>
-              <span>If a position fails to reach the minimum profit threshold within the defined time window, the system can prompt an exit signal.</span>
-            </div>
-            <div class="stack-item">
-              <strong>Low-Efficiency Trade Filter</strong>
-              <span>Helps reduce the drag caused by trades that consume time but fail to produce meaningful progress.</span>
-            </div>
-            <div class="stack-item">
-              <strong>Structured Execution</strong>
-              <span>Encourages selective participation rather than constant exposure.</span>
-            </div>
+        <div class="feature-grid">
+          <div class="feature-block">
+            <span class="eyebrow">Decision Panel</span>
+            <h3 class="card-title">See the context before taking the trade</h3>
+            <p>HTF bias, regime, market score, and risk state are shown together so traders can decide whether the trade deserves attention at all. That matters more than one more entry arrow.</p>
+            <ul class="clean-list">
+              <li>Higher timeframe directional context</li>
+              <li>Regime awareness built into the screen</li>
+              <li>Market score for fast decision support</li>
+            </ul>
           </div>
-          <figure class="feature-preview">
-            <img class="feature-shot" src="assets/engine-b1.png" alt="Trend continuation trade example showing structured risk and exits">
-          </figure>
+          <div class="feature-block">
+            <span class="eyebrow">Risk Control</span>
+            <h3 class="card-title">Built-in discipline, not after-the-fact excuses</h3>
+            <p>Time Stop logic can flag trades that consume time without producing enough progress. That means less dead weight, fewer low-efficiency positions, and a cleaner workflow.</p>
+            <ul class="clean-list">
+              <li>Time Stop to reduce low-efficiency holds</li>
+              <li>Helps avoid getting stuck in stale setups</li>
+              <li>Supports selective participation over constant exposure</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="principles">
+    <section id="proof">
       <div class="container">
         <div class="section-head">
-          <div>
-            <h2>Built around discipline.<br>Not prediction.</h2>
-          </div>
-          <p>
-            The system is designed around structure, selection, and controlled participation.
-            It does not try to trade everything, because that is usually how people end up donating money to the market.
-          </p>
+          <h2 class="section-title">What you can add next</h2>
+          <p class="section-copy">This is where your backtest summaries, CSV-based charts, monthly performance, and symbol-by-symbol comparisons should go. Right now these are placeholders, because websites still require content no matter how rude that fact may be.</p>
+        </div>
+        <div class="proof-grid">
+          <div class="proof-card"><strong>Win Rate</strong><span>Add summary from CSV or backtest export</span></div>
+          <div class="proof-card"><strong>Avg R</strong><span>Useful for showing quality, not just frequency</span></div>
+          <div class="proof-card"><strong>Max DD</strong><span>Helps build trust through realism</span></div>
+          <div class="proof-card"><strong>Trades</strong><span>Shows whether the sample size is meaningful</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Simple plans. Clear logic.</h2>
+          <p class="section-copy">Start with the core system. Upgrade only if you need more execution frequency.</p>
         </div>
 
-        <div class="principles">
-          <div class="principle">
-            <h4>Not Perfection</h4>
-            <p>The goal is not to predict every move. The goal is to avoid low-quality ones.</p>
-          </div>
-          <div class="principle">
-            <h4>Not Overtrading</h4>
-            <p>More signals do not automatically mean more edge. Selection still matters.</p>
-          </div>
-          <div class="principle">
-            <h4>Directional Clarity</h4>
-            <p>HTF bias, regime, and structure context help reduce unnecessary conflict in decision-making.</p>
-          </div>
-          <div class="principle">
-            <h4>Controlled Risk</h4>
-            <p>Built-in management logic helps preserve attention and capital when conditions are weak.</p>
-          </div>
+        <div class="pricing-grid">
+          <article class="pricing-card">
+            <div class="pricing-tag">Demo</div>
+            <h3 class="pricing-title">Free Trial</h3>
+            <div class="price-line">
+              <div class="price">Free</div>
+            </div>
+            <ul class="clean-list">
+              <li>λ Core (A / B1 / B2)</li>
+              <li>Decision Panel</li>
+              <li>Risk Control</li>
+              <li>7-day full access</li>
+            </ul>
+            <p class="mini-note">
+              If your result is net loss, you can request a one-time extension with valid trade conditions and order screenshots, up to 14 days total. One account, one trial only.
+            </p>
+            <a class="btn btn-secondary" href="#cta">Try Demo</a>
+          </article>
+
+          <article class="pricing-card">
+            <div class="pricing-tag">Monthly</div>
+            <h3 class="pricing-title">Flexible Access</h3>
+            <div class="price-line">
+              <div class="price">$59</div>
+              <div class="price-note">per month</div>
+            </div>
+            <ul class="clean-list">
+              <li>λ Core (A / B1 / B2)</li>
+              <li>Decision Panel</li>
+              <li>Risk Control</li>
+              <li>Standard access</li>
+            </ul>
+            <div class="mini-note">
+              Best for testing workflow and short-term usage.
+            </div>
+            <a class="btn btn-secondary" href="#cta">Start Monthly</a>
+          </article>
+
+          <article class="pricing-card featured">
+            <div class="pricing-tag">Yearly</div>
+            <h3 class="pricing-title">Best Value</h3>
+            <div class="price-line">
+              <div class="price">$539</div>
+              <div class="price-note">per year</div>
+            </div>
+            <ul class="clean-list">
+              <li>λ Core (A / B1 / B2)</li>
+              <li>Decision Panel</li>
+              <li>Risk Control</li>
+              <li>~24% lower vs monthly</li>
+            </ul>
+            <div class="mini-note">
+              Best for consistent and long-term traders.
+            </div>
+            <a class="btn btn-primary" href="#cta">Choose Yearly</a>
+          </article>
+
+          <article class="pricing-card">
+            <div class="pricing-tag">Add-on</div>
+            <h3 class="pricing-title">BMV Unlock</h3>
+            <div class="price-line">
+              <div class="price">$10</div>
+              <div class="price-note">/mo or $110/yr</div>
+            </div>
+            <ul class="clean-list">
+              <li>BMV Opportunity Engine</li>
+              <li>More trade setups</li>
+              <li>Higher execution frequency</li>
+            </ul>
+            <div class="mini-note">
+              Optional upgrade for advanced users. Monthly Pro: $69, Yearly Pro: $649.
+            </div>
+            <a class="btn btn-secondary" href="#cta">Get Unlock</a>
+          </article>
+        </div>
+
+        <p class="section-copy" style="margin-top:40px; text-align:center;">
+          This is not a prediction tool. It is an execution framework focused on timing and decision quality.
+        </p>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Questions people will ask anyway</h2>
+          <p class="section-copy">A good FAQ reduces friction. A bad FAQ is just a landfill of filler text. Let’s aim slightly above landfill.</p>
+        </div>
+        <div class="faq-grid">
+          <article class="faq-item">
+            <h3>Is this suitable for beginners?</h3>
+            <p>Yes, if they want a cleaner, more guided workflow. The page and system should explain enough to be approachable without removing useful depth.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Does this predict the market?</h3>
+            <p>No. It is an execution framework, not a crystal ball in a premium subscription wrapper.</p>
+          </article>
+          <article class="faq-item">
+            <h3>What does BMV mean for the user?</h3>
+            <p>It adds more valid opportunity windows for traders who want more activity, but it should be positioned as an advanced option rather than mandatory complexity.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Can performance data be shown here?</h3>
+            <p>Yes. CSV exports can be turned into summary cards, equity curves, monthly PnL tables, and symbol comparisons for a much stronger proof section.</p>
+          </article>
         </div>
       </div>
     </section>
 
     <section id="cta">
       <div class="container cta-shell">
-        <div class="cta-card">
-          <div class="engine-label">Access</div>
-          <h2 class="cta-title">A system for traders who want process, not noise.</h2>
-          <p>
-            If your focus is structured execution, condition-aware logic, and disciplined opportunity selection,
-            SMC Slayer λ was built for that workflow.
-          </p>
-          <div class="cta-actions">
+        <div class="cta-box">
+          <span class="eyebrow">Get access</span>
+          <h2 class="section-title">A clearer system for traders who want cleaner decisions.</h2>
+          <p class="section-copy">Use this section for your Telegram link, demo version, unlock key, and onboarding guide. That way visitors can actually do something instead of just admiring your gradients.</p>
+          <div class="actions">
             <a class="btn btn-primary" href="#">Join Telegram</a>
-            <a class="btn btn-secondary" href="#">Get Unlock Key</a>
             <a class="btn btn-secondary" href="#">Try Demo Version</a>
-            <a class="btn btn-secondary" href="#">Learn How to Use the System</a>
+            <a class="btn btn-secondary" href="#">Get Unlock Key</a>
+            <a class="btn btn-secondary" href="#">Learn How It Works</a>
           </div>
-          <div class="small-note">Replace these links with your Telegram, unlock access page, demo page, and usage guide.</div>
         </div>
-
-        <div class="info-card">
-          <h3>Core positioning</h3>
-          <div class="stack-list">
-            <div class="stack-item">
-              <strong>Professional tone</strong>
-              <span>Focused on process, system logic, and trust over hype.</span>
-            </div>
-            <div class="stack-item">
-              <strong>Structure × Rhythm</strong>
-              <span>SMC λ handles structural logic while BMV extends opportunity capture.</span>
-            </div>
-            <div class="stack-item">
-              <strong>Decision assistance</strong>
-              <span>Not just where to enter, but whether the trade deserves attention at all.</span>
-            </div>
-            <div class="stack-item">
-              <strong>Scalable brand base</strong>
-              <span>Ready to expand into Features, Live Cases, FAQ, and pricing pages.</span>
-            </div>
-          </div>
+        <div class="info-box">
+          <span class="eyebrow">What to add next</span>
+          <ul class="clean-list">
+            <li>Telegram or support contact links</li>
+            <li>Unlock feature comparison table</li>
+            <li>CSV-based performance visuals</li>
+            <li>Live cases or replay examples</li>
+            <li>User guide and onboarding flow</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section class="bottom-logo-hero" id="brand-end">
+    <section class="bottom-logo" id="brand-end">
       <div class="container">
+        <img src="assets/logo.png" alt="Coinfindence logo" class="footer-logo">
         <div class="logo-stack">
           <div class="sweep"></div>
           <h2 class="logo-line coin">Coin</h2>
@@ -1184,25 +1331,15 @@
   </main>
 
   <footer class="footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <div class="brand-icon"><span>CF</span></div>
-        <div class="footer-text">
-          <strong>Coinfindence | SMC Slayer λ</strong><br>
-          Structured trading, better selection, cleaner execution.
-        </div>
-      </div>
-      <div class="footer-links">
-        <a href="#top">Home</a>
-        <a href="#engines">Engines</a>
-        <a href="#features">Features</a>
-        <a href="#principles">Principles</a>
-      </div>
+    <div class="container footer-row">
+      <div>Coinfindence | SMC Slayer λ Pro</div>
+      <div>Structured trading, cleaner timing, better selection.</div>
     </div>
   </footer>
+
   <script>
     function restartBottomAnimation() {
-      const hero = document.querySelector('.bottom-logo-hero');
+      const hero = document.querySelector('.bottom-logo');
       if (!hero) return;
       const newHero = hero.cloneNode(true);
       hero.parentNode.replaceChild(newHero, hero);
